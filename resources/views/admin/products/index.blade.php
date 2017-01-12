@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
 	<h3 class="">
-		productas
+		Produtos
 		<a href="{{route('admin.products.create')}}" class="pull-right btn btn-primary">
-			Nova producta <span class="glyphicon glyphicon-plus"></span>
+			Adicionar <span class="glyphicon glyphicon-plus"></span>
 		</a>
 	</h3>
 

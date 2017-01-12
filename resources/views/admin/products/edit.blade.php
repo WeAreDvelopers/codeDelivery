@@ -10,7 +10,9 @@
 	  <div class="form-group">
 	  	{!! Form::submit('Criar Categoria',['class'=>"btn btn-success btn-block"])!!}
 	  </div>
-	
+		<div class="form-group">
+			<a href="{{route('admin.products.delete',['id'=>$product->id])}}">Remover Produto</a>
+		</div>
 	  	@include('errors._check')
 	 
 	{!! Form::close() !!}

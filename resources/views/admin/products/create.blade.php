@@ -4,11 +4,11 @@
 <div class="container">
 
 	<div class="col-md-6 col-md-offset-3">
-	<h3 class="text-center">Nova Categorias</h3>
-	{!! Form::open(['route'=>'admin.categories.store', 'class'=>'form well']) !!}
-		@include('admin.categories._form')
+	<h3 class="text-center">Novo Produto</h3>
+	{!! Form::open(['route'=>'admin.products.store', 'class'=>'form well']) !!}
+		@include('admin.products._form')
 	  <div class="form-group">
-	  	{!! Form::submit('Criar Categoria',['class'=>"btn btn-success btn-block"])!!}
+	  	{!! Form::submit('Criar Produto',['class'=>"btn btn-success btn-block"])!!}
 	  </div>
 	
 	  @include('errors._check')

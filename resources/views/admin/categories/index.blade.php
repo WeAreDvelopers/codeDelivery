@@ -5,7 +5,7 @@
 	<h3 class="">
 		Categorias
 		<a href="{{route('admin.categories.create')}}" class="pull-right btn btn-primary">
-			Nova Categoria <span class="glyphicon glyphicon-plus"></span>
+			Adicionar <span class="glyphicon glyphicon-plus"></span>
 		</a>
 	</h3>
 

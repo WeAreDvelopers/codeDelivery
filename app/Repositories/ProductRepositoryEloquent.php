@@ -24,7 +24,7 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
     {
         return Product::class;
     }
-
+   
     
 
     /**

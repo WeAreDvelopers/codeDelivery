@@ -34,6 +34,4 @@
 			{!!$categories->render()!!}
 		</div>
 </div>
-
-
 @stop

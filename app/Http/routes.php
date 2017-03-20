@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole'],function(){
-
+Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole:admin'],function(){
+	
 	Route::group(['prefix'=>'categoria','as'=>'categories.'],function(){
 		Route::get('', ['as'=>'index','uses'=>'CategoriesController@index']);
 		Route::get('nova',['as'=>'create', 'uses'=>'CategoriesController@create']);
@@ -32,6 +32,22 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole'],
 		Route::post('store',['as'=>'store', 'uses'=>'ProductsController@store']);
 		Route::post('update/{id}',['as'=>'update', 'uses'=>'ProductsController@update']);
 		Route::get('delete/{id}',['as'=>'delete', 'uses'=>'ProductsController@delete']);
+	});
+	Route::group(['prefix'=>'clientes','as'=>'clients.'],function(){
+		Route::get('', ['as'=>'index','uses'=>'ClientsController@index']);
+		Route::get('novo',['as'=>'create', 'uses'=>'ClientsController@create']);
+		Route::get('editar/{id}',['as'=>'edit', 'uses'=>'ClientsController@edit']);
+		Route::post('store',['as'=>'store', 'uses'=>'ClientsController@store']);
+		Route::post('update/{id}',['as'=>'update', 'uses'=>'ClientsController@update']);
+		Route::get('delete/{id}',['as'=>'delete', 'uses'=>'ClientsController@delete']);
+	});
+	Route::group(['prefix'=>'pedidos','as'=>'orders.'],function(){
+		Route::get('', ['as'=>'index','uses'=>'OrdersController@index']);
+		Route::get('novo',['as'=>'create', 'uses'=>'OrdersController@create']);
+		Route::get('editar/{id}',['as'=>'edit', 'uses'=>'OrdersController@edit']);
+		Route::post('store',['as'=>'store', 'uses'=>'OrdersController@store']);
+		Route::post('update/{id}',['as'=>'update', 'uses'=>'OrdersController@update']);
+		Route::get('delete/{id}',['as'=>'delete', 'uses'=>'OrdersController@delete']);
 	});
 
 });

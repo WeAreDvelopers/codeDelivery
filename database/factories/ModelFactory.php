@@ -20,6 +20,7 @@ $factory->define(CodeDelivery\Models\User::class, function (Faker\Generator $fak
     ];
 });
 
+
 $factory->define(CodeDelivery\Models\Category::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
@@ -31,8 +32,7 @@ $factory->define(CodeDelivery\Models\Product::class, function (Faker\Generator $
     return [
         'name' => $faker->word,
         'description' => $faker->sentence,
-        'price' => $faker->numberBetween(10,50),
-        
+        'price' => $faker->numberBetween(10,50),   
     ];
 });
 
@@ -46,4 +46,19 @@ $factory->define(CodeDelivery\Models\Client::class, function (Faker\Generator $f
         
     ];
 });
+
+$factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $faker) {
+    return [
+        'client_id' => rand(1,40),
+        'status' => $faker->randomElement($array = array ('1','2','3','4','5','6'))];
+});
+$factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator $faker) {
+    return [
+        'product_id' => rand(1,60),
+        'order_id' =>rand(1,75),
+        'price' => $faker->numberBetween(10,50),
+        'qtd' => $faker->randomDigit,                       
+    ];
+});
+
 

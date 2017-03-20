@@ -1,9 +1,9 @@
 <?php
-
+use Illuminate\Database\Seeder;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersItemsTable extends Migration
+class CreateOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateOrdersItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders_item', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
-
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->decimal('price');
@@ -32,6 +31,6 @@ class CreateOrdersItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('orders_item');
+        Schema::drop('order_items');
     }
 }

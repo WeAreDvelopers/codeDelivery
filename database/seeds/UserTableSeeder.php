@@ -12,11 +12,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class,10)->create()->each(function($c){
-
-       	for ($i=0; $i <= 5; $i++) { 
+        factory(User::class,50)->create()->each(function($c){
        		$c->client()->save(factory(Client::class)->make());
-       	}
        });
         factory(User::class)->create([
             'name' => 'User',
@@ -32,5 +29,27 @@ class UserTableSeeder extends Seeder
             'role'=>'admin',
             'remember_token' => str_random(10),
         ]);
+        factory(User::class)->create([
+            'name' => 'Entregador 1',
+            'email' => 'entregador1@codedelivery.com.br',
+            'password' => bcrypt('123456'),
+            'role'=>'deliveryman',
+            'remember_token' => str_random(10),
+        ]);
+        factory(User::class)->create([
+            'name' => 'Entregador 2',
+            'email' => 'entregador2@codedelivery.com.br',
+            'password' => bcrypt('123456'),
+            'role'=>'delivery',
+            'remember_token' => str_random(10),
+        ]);
+        factory(User::class)->create([
+            'name' => 'Entregador 3',
+            'email' => 'entregador3@codedelivery.com.br',
+            'password' => bcrypt('123456'),
+            'role'=>'delivery',
+            'remember_token' => str_random(10),
+        ]);
     }
+       
 }

@@ -7,7 +7,7 @@
 	<title>Laravel</title>
 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="/css/custom.css" rel="stylesheet">
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -35,6 +35,8 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ route('admin.categories.index') }}">Categoria</a></li>
 					<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
+					<li><a href="{{ route('admin.clients.index') }}">Clientes</a></li>
+					<li><a href="{{ route('admin.orders.index') }}">Pedidos</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

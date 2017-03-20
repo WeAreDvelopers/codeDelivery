@@ -16,7 +16,7 @@ class Order extends Model implements Transformable
         'total',
         'status',
     ];
-    public function item(){
+    public function items(){
         return $this->hasMany(OrderItem::class);
     }
 
@@ -25,6 +25,9 @@ class Order extends Model implements Transformable
     }
     public function products(){
         return $this->hasMany(Product::class);
+    }
+    public function client(){
+        return $this->belongsTo(User::class);
     }
 
 }

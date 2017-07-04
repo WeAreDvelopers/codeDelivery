@@ -16,10 +16,12 @@
 		<div class="col-md-4">
 			    <address>
                           <strong>Cliente</strong>
-                          <br><span class="glyphicon glyphicon-user"></span> {{$order->client->name}}
-                          {!! Form::hidden('name',$order->client->name,['class'=>'form-control']) !!}
-                          <br><span class="glyphicon glyphicon-envelope"></span> {{$order->client->email}}
-                          <br>
+                          <br><span class="glyphicon glyphicon-user"></span> {{$order->client->user->name}}
+                          {!! Form::hidden('name',$order->client->user->name,['class'=>'form-control']) !!}
+                          <br><span class="glyphicon glyphicon-envelope"></span> {{$order->client->user->email}}
+                          <br>Endereço:{{$order->client->address}}
+                          <br>Cidade:{{$order->client->city}} - {{$order->client->state}}
+                          <br>CEP:{{$order->client->zipcode}}
                 </address>
 		</div>
 		<div class="col-md-4 pull-right text-right">

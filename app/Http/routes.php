@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix'=>'customer','as'=>'customer.', 'middleware'=>'auth.checkrole:client'],function(){
+		Route::get('order/create', ['as'=>'order.create','uses'=>'CheckoutController@create']);
+		Route::post('order/store', ['as'=>'order.store','uses'=>'CheckoutController@store']);
+		Route::get('order', ['as'=>'order.index','uses'=>'CheckoutController@index']);
+});
+
 Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole:admin'],function(){
 	
 	Route::group(['prefix'=>'categoria','as'=>'categories.'],function(){
@@ -48,6 +54,14 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole:ad
 		Route::post('store',['as'=>'store', 'uses'=>'OrdersController@store']);
 		Route::post('update/{id}',['as'=>'update', 'uses'=>'OrdersController@update']);
 		Route::get('delete/{id}',['as'=>'delete', 'uses'=>'OrdersController@delete']);
+	});
+	Route::group(['prefix'=>'cupoms','as'=>'cupoms.'],function(){
+		Route::get('', ['as'=>'index','uses'=>'CupomsController@index']);
+		Route::get('novo',['as'=>'create', 'uses'=>'CupomsController@create']);
+		Route::get('editar/{id}',['as'=>'edit', 'uses'=>'CupomsController@edit']);
+		Route::post('store',['as'=>'store', 'uses'=>'CupomsController@store']);
+		Route::post('update/{id}',['as'=>'update', 'uses'=>'CupomsController@update']);
+		Route::get('delete/{id}',['as'=>'delete', 'uses'=>'CupomsController@delete']);
 	});
 
 });

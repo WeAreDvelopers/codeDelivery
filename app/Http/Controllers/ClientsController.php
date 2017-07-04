@@ -8,13 +8,13 @@ use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Http\Requests;
 use CodeDelivery\Http\Requests\AdminClientRequest;
 use CodeDelivery\Http\Controllers\Controller;
-
+use CodeDelivery\Services\ClientService;
 class ClientsController extends Controller
 {
 	private $repository;
-	public function __construct(ClientRepository $repository, UserRepository $userRepository){
+	public function __construct(ClientRepository $repository, ClientService $clientService){
 		$this->repository = $repository;
-        $this->userRepository = $userRepository;
+        $this->clientService = $clientService;
 	}
     public function index(){
 
@@ -27,23 +27,22 @@ class ClientsController extends Controller
     }
     public function store(AdminClientRequest $request){
      	$data = $request->all();
-        $res = $this->userRepository->create($data);
-        $data['user_id'] = $res->id; /* VALIDAR METODO */
-     	$this->repository->create($data);
+        
+     	$this->clientService->create($data);
 
      	return redirect()->route('admin.clients.index');	
     }
     public function edit($id){
     	$client = $this->repository->find($id);
-        $client->name = $client->user->name; /* VALIDAR METODO */
-        $client->email = $client->user->email; /* VALIDAR METODO */
+       /* $client->name = $client->user->name;  VALIDAR METODO */
+        /*$client->email = $client->user->email;  VALIDAR METODO */
 
     	return view('admin.clients.edit',compact('client'));	
     }
     public function update(AdminClientRequest $request,$id){
     	$data = $request->all();
-     	$this->repository->update($data,$id);
-        $this->userRepository->update($data,$data['user_id']);/* VALIDAR METODO */
+     	$this->clientService->update($data,$id);
+        
      	return redirect()->route('admin.clients.index');	
     }
      public function delete( $id){

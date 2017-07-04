@@ -20,9 +20,10 @@ class OrdersController extends Controller
        
 	}
     public function index(){
-
+        $list_status = [0 => 'Iniciado',1 => 'Aguardando Pagamento',2 => 'Cancelado',3 => 'Pago',4 => 'A Caminho',5 => 'Devolvida',6 => 'Entregue'];
     	$orders = $this->repository->paginate();
-    	return view('admin.orders.index',compact('orders'));
+       
+    	return view('admin.orders.index',compact('orders','list_status'));
     }
     public function create(){
         $categories = $this->categoryRepository->lists('name','id');
@@ -36,6 +37,7 @@ class OrdersController extends Controller
     public function edit($id, UserRepository $userRepository ){
         $list_status = [0 => 'Iniciado',1 => 'Aguardando Pagamento',2 => 'Cancelado',3 => 'Pago',4 => 'A Caminho',5 => 'Devolvida',6 => 'Entregue'];
     	$order = $this->repository->find($id);
+       
         $categories = $this->categoryRepository->lists('name','id');
         $deliveryman = $userRepository->getDeliveryman();
     	return view('admin.orders.edit',compact('order','categories','deliveryman','list_status'));	

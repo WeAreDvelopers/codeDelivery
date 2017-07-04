@@ -27,7 +27,8 @@ class Order extends Model implements Transformable
         return $this->hasMany(Product::class);
     }
     public function client(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Client::class);
     }
+    
 
 }

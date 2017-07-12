@@ -66,4 +66,14 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole:ad
 
 });
 
-
+Route::post('oauth/access_token', function() {
+    return Response::json(Authorizer::issueAccessToken());
+});
+Route::group(['prefix'=>'api','as'=>'api.', 'middleware'=>'oauth'],function(){
+	Route::get('pedidos',function(){
+		return [
+		'id' => '1',
+		'cliente' => "Rafael",
+		'Total' => "R$ 100.00"];
+	});
+});

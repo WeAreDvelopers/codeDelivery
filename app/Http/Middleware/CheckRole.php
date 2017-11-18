@@ -18,7 +18,7 @@ class CheckRole
         if(!Auth::check()){
            return redirect('/auth/login');
         }
-         if(Auth::user()->role <> $role){
+        if(Auth::user()->role <> $role){
            return redirect('/auth/login');
         }
         return $next($request);

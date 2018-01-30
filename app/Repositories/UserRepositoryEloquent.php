@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Models\User;
+use CodeDelivery\Presenters\UserPresenter;
 use CodeDelivery\Validators\UserValidator;
 
 /**
@@ -19,6 +20,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      *
      * @return string
      */
+   
     public function model()
     {
         return User::class;
@@ -37,4 +39,8 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+   /*  public function presenter()
+    {
+        return UserPresenter::class;
+    }*/
 }

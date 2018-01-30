@@ -26,6 +26,9 @@ class OrderService
 		DB::beginTransaction();
 		try{
 			$data['status'] = 0;
+			if(isset($data['cupom_id'])){
+				unset($data['cupom_id']);
+			}
 		if(isset($data['cupom_code'])){
 			$cupom = $this->cupomRepository->findByField('code',$data['cupom_code'])->first();
 			$data['cupom_id'] = $cupom->id;
@@ -57,5 +60,16 @@ class OrderService
 			
 		}
 	}
+	public function updateStatus($id,$idDeliveryman,$status){
+		$order = $this->orderRepository->getByIdAndDeliveryman($id,$idDeliveryman);
+		
+		if($order){
+			$order->status = $status;
+			$order->save();
+			return $order;
+		}
+		return false;
+	}
+
 
 }

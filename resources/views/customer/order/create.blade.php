@@ -4,7 +4,7 @@
 
 <div class="container">
 	<h3>Novo Pedido</h3>
-	
+	@include('errors._check')
 	{!!Form::open(['route'=>'customer.order.store','class'=>'form'])!!}
 		<div class="container">
 			<div class="form-group">

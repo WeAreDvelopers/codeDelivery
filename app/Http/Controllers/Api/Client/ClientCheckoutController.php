@@ -29,7 +29,7 @@ class ClientCheckoutController extends Controller
 	}
     public function index(){
         $id = Authorizer::getResourceOwnerId();
-        $clientId = $this->userRepository->find($id)->client->id;
+        $clientId = $this->userRepository->skipPresenter()->find($id)->client->id;
         $orders = $this->repository
         ->skipPresenter(false)
         ->with($this->with)
@@ -42,7 +42,7 @@ class ClientCheckoutController extends Controller
     public function store(Requests\CheckoutRequest $request){
        $data = $request->all();
         $id = Authorizer::getResourceOwnerId();
-        $clientId = $this->userRepository->find($id)->client->id;
+        $clientId = $this->userRepository->skipPresenter()->find($id)->client->id;
         $data['client_id'] = $clientId;
         $orderObj = $this->service->create($data);
 

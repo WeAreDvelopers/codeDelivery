@@ -17,5 +17,5 @@ class Category extends Model implements Transformable
     public function products(){
     	return $this->hasMany(Product::class);
     }
-
+    
 }

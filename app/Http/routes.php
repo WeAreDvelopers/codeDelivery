@@ -68,9 +68,9 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware'=>'auth.checkrole:ad
 });
 
 Route::group(['middleware'=>'cors'],function(){
-Route::post('oauth/access_token', function() {
-    return Response::json(Authorizer::issueAccessToken());
-});
+	Route::post('oauth/access_token', function() {
+	    return Response::json(Authorizer::issueAccessToken());
+	});
 Route::group(['prefix'=>'api','as'=>'api.', 'middleware'=>'oauth'],function(){
 
 	Route::get('authenticated',['as'=>'authenticated', 'uses'=>'Api\ApiController@authenticated']);
